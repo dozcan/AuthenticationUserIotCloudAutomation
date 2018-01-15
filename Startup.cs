@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Auth
 {
@@ -44,6 +46,7 @@ namespace Auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            WaitForDBInit(_connectionString);
             services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(Auth.Models.TestContext),new Auth.Models.TestContext(_connectionString,_host)));
             
@@ -59,5 +62,28 @@ namespace Auth
 
             app.UseMvc();
         }
+
+        private static void WaitForDBInit(string connectionString)
+        {         
+            var connection = new MySqlConnection(connectionString);
+            int retries = 1;
+            while (retries < 7)
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to db. Trial: {0}", retries);
+                    connection.Open();
+                    connection.Close();
+                    break;
+                }
+                catch (Exception ex)
+                {  
+                   Console.WriteLine("doga");
+                    Console.WriteLine(ex);
+                    Thread.Sleep((int) Math.Pow(2, retries) * 1000);
+                    retries++;
+                }
+            }
     }
+}
 }

@@ -32,6 +32,8 @@ services:
    - productdata:/var/lib/mysql
   networks:
    - backend
+  env_file:
+   - configuration.env
   environment:
    - MYSQL_ROOT_PASSWORD = 105481Do
    - bind-address = 0.0.0.0
