@@ -36,6 +36,9 @@ services:
   env_file:
    - configuration.env
   environment:
-   MYSQL_RANDOM_ROOT_PASSWORD: !!str yes
+   - MYSQL_ROOT_PASSWORD=105481Do
+   - MYSQL_DATABASE=users
+   - MYSQL_USER=root
+   - MYSQL_PASSWORD=105481Do
 
     
