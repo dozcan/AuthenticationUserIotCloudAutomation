@@ -25,10 +25,12 @@ namespace Auth
             Configuration = builder.Build();
             
             var envs = Environment.GetEnvironmentVariables();
-            var host = envs["DBHOST"] ?? "localhost";
-            var port = envs["DBPORT"] ?? "3306";
-            var password = envs["DBPASSWORD"] ?? "105481Do";
-            var DefaultConnection = "server={host};port={port};database=userDb;user=root;password={password};";
+            var DBUSER = envs["DBUSER"];
+            var host = envs["DBHOST"];
+            var port = envs["DBPORT"];
+            var password = envs["DBPASSWORD"];
+            var db = envs["DATABASE"];
+            var DefaultConnection = "server={host};port={port};database={db};user={DBUSER};password={password};";
             
 
             String config = DefaultConnection;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
