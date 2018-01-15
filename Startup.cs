@@ -35,7 +35,7 @@ namespace Auth
             var DefaultConnection = "server={host};port={port};database={db};user={DBUSER};password={password};";
             
 
-            String config = Configuration["ConnectionStrings:DefaultConnection".ToString()];
+            String config = DefaultConnection;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
             _host[0] = "172.31.30.175";
             _host[1] = "25";
             _connectionString = config;
@@ -46,10 +46,10 @@ namespace Auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Thread.Sleep(20000);
+            WaitForDBInit(_connectionString);
             services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(Auth.Models.TestContext),new Auth.Models.TestContext(_connectionString,_host)));
-           // WaitForDBInit(_connectionString);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
