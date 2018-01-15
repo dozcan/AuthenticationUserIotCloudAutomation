@@ -9,6 +9,17 @@ networks:
 
 services:
 
+ app:
+  build: 
+   context: Dockerfile
+  networks:
+   - backend
+   - frontend
+  environment:
+   - DBHOST = mysql
+  depends_on:
+   - mysql  
+
  mysql:
   image: "mysql:8.0.0"
   volumes:
