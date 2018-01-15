@@ -16,7 +16,7 @@ services:
   networks:
    - backend
   environment
-   - MYSQL_ROOT_PASSWORD = doga
+   - MYSQL_ROOT_PASSWORD = 105481Do
    - bind-address = 0.0.0.0
-     
+
     

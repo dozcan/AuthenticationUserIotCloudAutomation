@@ -24,15 +24,14 @@ namespace Auth
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             Configuration = builder.Build();
             
-           /* var envs = Environment.GetEnvironmentVariables();
-            var mailHost = envs
+            var envs = Environment.GetEnvironmentVariables();
             var host = envs["DBHOST"] ?? "localhost";
             var port = envs["DBPORT"] ?? "3306";
             var password = envs["DBPASSWORD"] ?? "105481Do";
-            var DefaultConnection = "server={host};port={port};database=userDb;user=root;password={password};"
-            */
+            var DefaultConnection = "server={host};port={port};database=userDb;user=root;password={password};";
+            
 
-            String config = Configuration["ConnectionStrings:DefaultConnection".ToString()];
+            String config = DefaultConnection;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
             _host[0] = "172.31.30.175";
             _host[1] = "25";
             _connectionString = config;
