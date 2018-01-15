@@ -18,7 +18,7 @@ services:
    - backend
    - frontend
   environment:
-    MYSQL_SERVER_NAME: ${MYSQL_SERVER_NAME}
+    MYSQL_SERVER_NAME: localhost
   depends_on:
    - mysql  
   ports:

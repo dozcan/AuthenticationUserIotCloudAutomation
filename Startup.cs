@@ -37,8 +37,9 @@ namespace Auth
             */
             //_connectionString = $@"Server={_config["MYSQL_SERVER_NAME"]}; Database={_config["MYSQL_DATABASE"]}; Uid={_config["MYSQL_USER"]}; Pwd={_config["MYSQL_PASSWORD"]}";
       
-
-            String config = Configuration["ConnectionStrings:DefaultConnection".ToString()];
+            _connectionString = $@"Server={_config["localhost"]}; Database={_config["users"]};Uid={_config["root"]}; Pwd={_config["105481Do"]}";
+      
+            String config = _connectionString;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
             _host[0] = "172.31.30.175";
             _host[1] = "25";
             _connectionString = config;
