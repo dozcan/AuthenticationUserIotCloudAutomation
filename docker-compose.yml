@@ -1,0 +1,22 @@
+version:"3"
+
+volumes:
+ productdata:
+
+networks:
+ frontend:
+ backend:
+
+services:
+
+ mysql:
+  image:"mysql:8.0.0"
+  volumes:
+   - productdata:/var/lib/mysql
+  networks:
+   - backend
+  environment
+   - MYSQL_ROOT_PASSWORD = doga
+   - bind-address = 0.0.0.0
+     
+    

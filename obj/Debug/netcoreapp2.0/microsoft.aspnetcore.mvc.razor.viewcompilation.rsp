@@ -1,0 +1,5 @@
+C:\lambda\Auth
+--output-path=obj\Debug\netcoreapp2.0\
+--application-name=Auth
+--content-root=C:\lambda\Auth
+--file=
