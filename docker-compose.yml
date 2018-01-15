@@ -2,6 +2,7 @@ version: "3.2"
 
 volumes:
  productdata:
+ table:
 
 networks:
  frontend:
@@ -29,6 +30,7 @@ services:
   image: "mysql:8.0.0"
   volumes:
    - productdata:/var/lib/mysql
+   - ./db:/db
   networks:
    - backend
   env_file:
