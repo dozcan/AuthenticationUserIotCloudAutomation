@@ -12,7 +12,7 @@ services:
  mysql:
   image: "mysql:8.0.0"
   volumes:
-   - productdata: "/var/lib/mysql"
+   - productdata: /var/lib/mysql
   networks:
    - backend
   environment:
