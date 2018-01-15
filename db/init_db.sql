@@ -11,5 +11,4 @@ CREATE TABLE user (
    flag varchar(45) DEFAULT NULL,
 
    PRIMARY KEY (id)
-
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+);
