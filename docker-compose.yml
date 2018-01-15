@@ -11,7 +11,8 @@ services:
 
  app:
   build: 
-   context: Dockerfile
+   context: .
+   dockerfile: Dockerfile
   networks:
    - backend
    - frontend
