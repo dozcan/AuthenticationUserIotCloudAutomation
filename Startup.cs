@@ -25,7 +25,8 @@ namespace Auth
             Configuration = configuration;
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             Configuration = builder.Build();
-            
+
+          /*  
             var envs = Environment.GetEnvironmentVariables();
             var DBUSER = envs["DBUSER"];
             var host = envs["DBHOST"];
@@ -33,9 +34,11 @@ namespace Auth
             var password = envs["DBPASSWORD"];
             var db = envs["DATABASE"];
             var DefaultConnection = "server={host};port={port};database={db};user={DBUSER};password={password};";
-            
+            */
+            //_connectionString = $@"Server={_config["MYSQL_SERVER_NAME"]}; Database={_config["MYSQL_DATABASE"]}; Uid={_config["MYSQL_USER"]}; Pwd={_config["MYSQL_PASSWORD"]}";
+      
 
-            String config = DefaultConnection;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
+            String config = Configuration["ConnectionStrings:DefaultConnection".ToString()];
             _host[0] = "172.31.30.175";
             _host[1] = "25";
             _connectionString = config;
