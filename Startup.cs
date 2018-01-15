@@ -35,7 +35,7 @@ namespace Auth
             var DefaultConnection = "server={host};port={port};database={db};user={DBUSER};password={password};";
             
 
-            String config = DefaultConnection;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
+            String config = Configuration["ConnectionStrings:DefaultConnection".ToString()];
             _host[0] = "172.31.30.175";
             _host[1] = "25";
             _connectionString = config;
