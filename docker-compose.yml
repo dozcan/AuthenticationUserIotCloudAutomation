@@ -30,7 +30,7 @@ services:
   image: "mysql:8.0.0"
   volumes:
    - productdata:/var/lib/mysql
-   - /db:/docker-entrypoint-initdb.d/
+   - /db:/etc/
   networks:
    - backend
   env_file:
