@@ -35,11 +35,6 @@ services:
    - backend
   env_file:
    - configuration.env
-  environment:
-      MYSQL_DATABASE : "test"
-      MYSQL_USER : "root"
-      MYSQL_PASSWORD : "105481Do"
-      MYSQL_SERVER_NAME : "localhost"
 
 
 
