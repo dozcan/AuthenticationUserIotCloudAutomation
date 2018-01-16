@@ -22,11 +22,15 @@ services:
 
  mysql:
   image: "mysql:8.0.0"
+  ports:
+    - "3306:3306"
   volumes:
    - productdata:/var/lib/mysql
-   - /db:/docker-entrypoint-initdb.d/
   env_file:
-   - configuration.env
+      MYSQL_ROOT_PASSWORD: 105481Do
+      MYSQL_DATABASE: users
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 105481Do
 
 
 
