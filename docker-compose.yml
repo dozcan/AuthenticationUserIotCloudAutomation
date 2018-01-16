@@ -27,10 +27,10 @@ services:
   volumes:
    - productdata:/var/lib/mysql
   env_file:
-      MYSQL_ROOT_PASSWORD: 105481Do
-      MYSQL_DATABASE: users
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 105481Do
+      MYSQL_ROOT_PASSWORD: "105481Do"
+      MYSQL_DATABASE: "users"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "105481Do"
 
 
 
