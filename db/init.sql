@@ -1,4 +1,4 @@
-USE DATABASE users;
+USE users;
 
 CREATE TABLE user (
 
