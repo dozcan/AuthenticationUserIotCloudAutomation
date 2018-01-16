@@ -106,11 +106,11 @@ public int PutUser(User user)
        }
 }
 
-public int PostUser(User user)
+public String PostUser(User user)
 {
      int count = 0;
      string flag = "T";
-
+     try{
        using(MySqlConnection conn = GetConnection())
        {
           conn.Open();
@@ -122,7 +122,12 @@ public int PostUser(User user)
           count = Convert.ToInt32(cmd.ExecuteScalar());
           conn.Close();
        }
-       return count;
+       return count.ToString();
+     }
+     catch(Exception ex)
+     {
+       return ex.ToString();
+     }
 }
 
 public void sendMail(string email)

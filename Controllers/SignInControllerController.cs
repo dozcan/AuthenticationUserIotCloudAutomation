@@ -11,10 +11,10 @@ namespace Auth.Controllers
     public class SignInController : Controller
     {
         [HttpPost]
-        public int Post([FromBody]Auth.Models.User value)
+        public String Post([FromBody]Auth.Models.User value)
         {
           TestContext context = HttpContext.RequestServices.GetService(typeof(Auth.Models.TestContext)) as TestContext;
-          int s = context.PostUser(value);
+          String s = context.PostUser(value);
           return s;
 
         }
