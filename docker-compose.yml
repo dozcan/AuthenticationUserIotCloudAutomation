@@ -18,11 +18,11 @@ services:
    - backend
    - frontend
   environment:
-    MYSQL_SERVER_NAME : 127.0.0.1
+    MYSQL_SERVER_NAME : ${MYSQL_SERVER_NAME}
   depends_on:
    - mysql  
   ports:
-   - 5000:80
+   - "5000:80"
   env_file:
    - configuration.env 
 
@@ -36,9 +36,5 @@ services:
   env_file:
    - configuration.env
   environment:
-   - MYSQL_ROOT_PASSWORD : 105481Do
-   - MYSQL_DATABASE : users
-   - MYSQL_USER : root
-   - MYSQL_PASSWORD : 105481Do
-
+      MYSQL_RANDOM_ROOT_PASSWORD: !!str yes
     
