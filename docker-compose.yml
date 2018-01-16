@@ -18,7 +18,7 @@ services:
    - backend
    - frontend
   environment:
-    MYSQL_SERVER_NAME : ${MYSQL_SERVER_NAME}
+    MYSQL_SERVER_NAME : "localhost"
   depends_on:
    - mysql  
   ports:
@@ -36,5 +36,11 @@ services:
   env_file:
    - configuration.env
   environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: !!str yes
+      MYSQL_DATABASE : "test"
+      MYSQL_USER : "root"
+      MYSQL_PASSWORD : "105481Do"
+      MYSQL_SERVER_NAME : "localhost"
+
+
+
     
