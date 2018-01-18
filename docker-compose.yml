@@ -8,13 +8,3 @@ services:
    dockerfile: Dockerfile 
   ports:
    - "8080:8080"
-
- mysqlDb:
-  image: "mysql:8.0.3"
-  ports:
-    - "3306:3306" 
-  environment:
-      MYSQL_ROOT_PASSWORD: 105481Do
-      MYSQL_DATABASE: iot
-      MYSQL_USER: root
-    
