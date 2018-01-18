@@ -16,7 +16,7 @@ services:
    context: .
    dockerfile: Dockerfile 
   ports:
-   - "5000:80"
+   - "101:80"
   links: 
    - mysqlDb
 
