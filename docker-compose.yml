@@ -7,17 +7,16 @@ services:
    context: .
    dockerfile: Dockerfile
   depends_on:
-   - mysql  
+   - mysqlDb  
   ports:
    - "5000:80"
 
- mysql:
+ mysqlDb:
   image: "mysql:8.0.3"
   ports:
     - "3308:3306"
   volumes:
     "./my.conf:/etc/mysql/conf.d/config-file.cnf"  
-    "./data:/var/lib/mysql:rw"
   environment:
       MYSQL_ROOT_PASSWORD: 105481Do
       MYSQL_DATABASE: iot
