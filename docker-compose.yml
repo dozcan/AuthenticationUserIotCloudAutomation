@@ -13,8 +13,6 @@ services:
   image: "mysql:8.0.3"
   ports:
     - "3308:3306"
-  volumes:
-
   environment:
       MYSQL_ROOT_PASSWORD: 105481Do
       MYSQL_DATABASE: iot
