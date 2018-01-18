@@ -37,11 +37,11 @@ namespace Auth
             */
             //_connectionString = $@"Server={_config["MYSQL_SERVER_NAME"]}; Database={_config["MYSQL_DATABASE"]}; Uid={_config["MYSQL_USER"]}; Pwd={_config["MYSQL_PASSWORD"]}";
       
-            _connectionString = "Host= 172.17.0.2;Database=iot;Port=3306;User=root;Password=105481Do";
+            _connectionString = "Host= mysqlDb;Database=iot;Port=3306;User=root;Password=105481Do";
             
       
             String config = _connectionString;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
-            _host[0] = "172.31.30.175";
+            _host[0] = "55.203.155.204";
             _host[1] = "25";
             _connectionString = config;
         }
