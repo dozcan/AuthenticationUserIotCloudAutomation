@@ -7,11 +7,9 @@ services:
   ports:
     - "3306:3306"
   environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-  env_file:
-    - configuration.env    
+      MYSQL_ROOT_PASSWORD: 105481Do
+      MYSQL_DATABASE: iot
+      MYSQL_USER: root 
  app:
   build: 
    context: .
