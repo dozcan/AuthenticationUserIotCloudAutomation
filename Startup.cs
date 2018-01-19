@@ -39,7 +39,7 @@ namespace Auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            WaitForDBInit(_connectionString);
+            //WaitForDBInit(_connectionString);
             services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(Auth.Models.TestContext),new Auth.Models.TestContext(_connectionString,_host)));
             
