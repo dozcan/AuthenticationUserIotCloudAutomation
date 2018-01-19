@@ -23,14 +23,14 @@ namespace Auth
 
         public Startup(IConfiguration configuration)
         {
-           /*DotNetEnv.Env.Load();
+           DotNetEnv.Env.Load();
             Configuration = configuration; 
             var host = System.Environment.GetEnvironmentVariable("MYSQL_SERVER_NAME");
             var db = System.Environment.GetEnvironmentVariable("MYSQL_DATABASE");
             var user = System.Environment.GetEnvironmentVariable("MYSQL_USER");
             var pass = System.Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
-            */
-           _connectionString = $@"Host=mysqlDb;Database=iot; Uid=root; Pwd=105481Do";   
+            
+           _connectionString = $@"host=host;Database=db; Uid=user; Pwd=pass";   
             String config = _connectionString;
         }
 
@@ -60,13 +60,33 @@ namespace Auth
         {         
             var connection = new MySqlConnection(connectionString);
             int retries = 1;
+            int count2;
+            string cmdStr = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'iot' AND table_name = 'user'";
+            string cmdStr2 = "use iot; create table user(id int(10) auto_increment primary key,name varchar(50),password varchar(50),email varchar(50),flag varchar(2))";
+    
             while (retries < 7)
             {
                 try
                 {
                     Console.WriteLine("Connecting to db. Trial: {0}", retries);
                     connection.Open();
+                    MySqlCommand cmd = new MySqlCommand(cmdStr, connection);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            int count = reader.GetInt32(0);
+                            if (count == 0)
+                            {
+                                MySqlCommand cmd2 = new MySqlCommand(cmdStr2, connection);
+                                count2 = Convert.ToInt32(cmd.ExecuteScalar());
+                
+                            }
+                        }
                     connection.Close();
+
+                    
+
                     break;
                 }
                 catch (Exception ex)
