@@ -62,7 +62,7 @@ namespace Auth
             int retries = 1;
             int count2;
             //string cmdStr = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'iot' AND table_name = 'user'";
-            string cmdStr = "create table 'user'(id int(10) auto_increment primary key,name varchar(50),password varchar(50),email varchar(50),flag varchar(2))";
+            string cmdStr = "create table user(id int(10) auto_increment primary key,name varchar(50),password varchar(50),email varchar(50),flag varchar(2))";
     
             while (retries < 7)
             {
@@ -70,7 +70,7 @@ namespace Auth
                 {
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand(cmdStr, connection);
-                    count2 = Convert.ToInt32(cmd.ExecuteScalar());
+                    int rows = cmd.ExecuteNonQuery();
                     connection.Close();
                     break;
                 }
