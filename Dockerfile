@@ -1,5 +1,5 @@
 FROM microsoft/aspnetcore-build:2.0
-COPY out /app
+COPY dist /app
 WORKDIR /app
 EXPOSE 80/tcp
 ENTRYPOINT ["dotnet","Auth.dll"]
