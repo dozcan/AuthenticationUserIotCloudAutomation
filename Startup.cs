@@ -11,6 +11,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using DotNetEnv;
 
 namespace Auth
 {
@@ -22,28 +23,14 @@ namespace Auth
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-            Configuration = builder.Build();
-
-          /*  
-            var envs = Environment.GetEnvironmentVariables();
-            var DBUSER = envs["DBUSER"];
-            var host = envs["DBHOST"];
-            var port = envs["DBPORT"];
-            var password = envs["DBPASSWORD"];
-            var db = envs["DATABASE"];
-            var DefaultConnection = "server={host};port={port};database={db};user={DBUSER};password={password};";
-            */
-            //_connectionString = $@"Server={_config["MYSQL_SERVER_NAME"]}; Database={_config["MYSQL_DATABASE"]}; Uid={_config["MYSQL_USER"]}; Pwd={_config["MYSQL_PASSWORD"]}";
-      
-            _connectionString = "Host= mysqlDb;Database=iot;Port=3306;User=root;Password=105481Do";
-            
-      
-            String config = _connectionString;//Configuration["ConnectionStrings:DefaultConnection".ToString()];
-            _host[0] = "55.203.155.204";
-            _host[1] = "25";
-            _connectionString = config;
+            DotNetEnv.Env.Load();
+            Configuration = configuration; 
+            var host = System.Environment.GetEnvironmentVariable("MYSQL_SERVER_NAME");
+            var db = System.Environment.GetEnvironmentVariable("MYSQL_DATABASE");
+            var user = System.Environment.GetEnvironmentVariable("MYSQL_USER");
+            var pass = System.Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+           _connectionString = $@"Host=host;Database=db; Uid=user; Pwd=pass";   
+            String config = _connectionString;
         }
 
         public IConfiguration Configuration { get; }
@@ -51,7 +38,7 @@ namespace Auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            WaitForDBInit(_connectionString);
+            //WaitForDBInit(_connectionString);
             services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(Auth.Models.TestContext),new Auth.Models.TestContext(_connectionString,_host)));
             

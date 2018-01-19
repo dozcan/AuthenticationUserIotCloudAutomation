@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "DotNetEnv/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/DotNetEnv.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DotNetEnv.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -4859,6 +4868,16 @@
     }
   },
   "libraries": {
+    "DotNetEnv/1.1.0": {
+      "sha512": "N3yWa+oTTPTudbJS1/pnLdE0hBHOlB9WXjPJ5lIFbQbgh3vGZCLMjS3KX/kVeMYL9DHBRKDRThMRQ3xPiOVIWw==",
+      "type": "package",
+      "path": "dotnetenv/1.1.0",
+      "files": [
+        "dotnetenv.1.1.0.nupkg.sha512",
+        "dotnetenv.nuspec",
+        "lib/netstandard2.0/DotNetEnv.dll"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -12777,6 +12796,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "DotNetEnv >= 1.1.0",
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.NETCore.App >= 2.0.0",
       "Pomelo.EntityFrameworkCore.Mysql >= 2.0.1"
@@ -12821,6 +12841,10 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "DotNetEnv": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.0.5, )"

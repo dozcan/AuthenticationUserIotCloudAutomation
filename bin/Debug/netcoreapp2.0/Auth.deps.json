@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "c0cfd1773d22e60e43c80c931bcad13b40d69fb1"
+    "signature": "807b127aefcf36f819a2c4adaffb4c54bf832e01"
   },
   "compilationOptions": {
     "defines": [
@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "Auth/1.0.0": {
         "dependencies": {
+          "DotNetEnv": "1.1.0",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.NETCore.App": "2.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "2.0.1"
@@ -32,6 +33,14 @@
         },
         "compile": {
           "Auth.dll": {}
+        }
+      },
+      "DotNetEnv/1.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/DotNetEnv.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/DotNetEnv.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4073,6 +4082,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DotNetEnv/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N3yWa+oTTPTudbJS1/pnLdE0hBHOlB9WXjPJ5lIFbQbgh3vGZCLMjS3KX/kVeMYL9DHBRKDRThMRQ3xPiOVIWw==",
+      "path": "dotnetenv/1.1.0",
+      "hashPath": "dotnetenv.1.1.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

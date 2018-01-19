@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Net;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth.Models
@@ -65,27 +66,29 @@ public void sendPassword(string email,string password)
    <h1>Password  for your IotAutomatedCloud account</h1>
    <p>This email was sent as a remainder for password: "+ password +  "</p></body></html>";
 
-   SmtpClient client =   new SmtpClient(Host[0],Convert.ToInt32(Host[1]));
-   System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+    var fromAddress = new MailAddress("iotcloudautomated@gmail.com", "iotcloudautomated");
+    var toAddress = new MailAddress(email, "PasswordForget@IotAutomatedCloud.com");
+    const string fromPassword = "105481Do";
+    const string subject = "Password for your IotAutomatedCloud account";
+    string body = html;
 
-   msg.From = new System.Net.Mail.MailAddress("PasswordForget@IotAutomatedCloud.com");
-   msg.Subject = "Password for your IotAutomatedCloud account";
-   List<String> mailgrup = new List<String>();
-   mailgrup.Add(email);
-
-   foreach(var list in mailgrup)
-    msg.To.Add(list);
-   
-   AlternateView htmlView = AlternateView.CreateAlternateViewFromString
-   (
-     html,
-     Encoding.UTF8,
-     MediaTypeNames.Text.Html
-   );
-
-   msg.AlternateViews.Add(htmlView);
-   msg.IsBodyHtml = true;
-   client.Send(msg);
+    var smtp = new SmtpClient
+    {
+        Host = "smtp.gmail.com",
+        Port = 587,
+        EnableSsl = true,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+        Timeout = 20000
+    };
+    using (var message = new MailMessage(fromAddress, toAddress)
+    {
+        Subject = subject,
+        Body = body 
+    })
+    {
+        smtp.Send(message);
+    }
 }
 
 public int PutUser(User user)
@@ -140,28 +143,29 @@ public void sendMail(string email)
    <p>This email was sent activation
    <a href=https://localhost:5000/api/activateUser/"+email+">Activation Link</a> click it.</p></body></html>";
 
-   SmtpClient client =   new SmtpClient(Host[0],Convert.ToInt32(Host[1]));
-   System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+     var fromAddress = new MailAddress("iotcloudautomated@gmail.com", "iotcloudautomated");
+    var toAddress = new MailAddress(email, "Activation@IotAutomatedCloud.com");
+    const string fromPassword = "105481Do";
+    const string subject = "Activation link for IotAutomatedCloud account";
+    string body = html;
 
-   msg.From = new System.Net.Mail.MailAddress("Activation@IotAutomatedCloud.com");
-   msg.Subject = "Activation link for IotAutomatedCloud account";
-   List<String> mailgrup = new List<String>();
-   mailgrup.Add(email);
-
-   foreach(var list in mailgrup)
-    msg.To.Add(list);
-   
-   AlternateView htmlView = AlternateView.CreateAlternateViewFromString
-   (
-     html,
-     Encoding.UTF8,
-     MediaTypeNames.Text.Html
-   );
-
-   msg.AlternateViews.Add(htmlView);
-   msg.IsBodyHtml = true;
-   client.Send(msg);
-
+    var smtp = new SmtpClient
+    {
+        Host = "smtp.gmail.com",
+        Port = 587,
+        EnableSsl = true,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+        Timeout = 20000
+    };
+    using (var message = new MailMessage(fromAddress, toAddress)
+    {
+        Subject = subject,
+        Body = body 
+    })
+    {
+        smtp.Send(message);
+    }
 }
 
 
