@@ -4,9 +4,10 @@ services:
 
  mysqlDb:
   image: "mysql:8.0.0"
+  restart: always
   volumes:
     - /var/lib/mysql
-    - /mysql.sh:/docker-entrypoint-initdb.d
+    - /script:/docker-entrypoint-initdb.d
   ports:
     - "3306:3306"
   environment:
