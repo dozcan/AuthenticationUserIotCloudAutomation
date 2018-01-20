@@ -1,12 +1,15 @@
 version: "3.2"
 
+volumes:
+ data:
+
 services:
 
  mysqlDb:
   image: "mysql:8.0.0"
   restart: always
   volumes:
-    - /var/lib/mysql
+    - data:/var/lib/mysql
     - /script:/docker-entrypoint-initdb.d
   ports:
     - "3306:3306"
@@ -19,7 +22,7 @@ services:
    context: .
    dockerfile: Dockerfile 
   ports:
-   - "101:80"
+   - "80:80"
   links: 
    - mysqlDb
 

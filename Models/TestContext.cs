@@ -60,11 +60,8 @@ public int ForgetPassword(User user)
 public void sendPassword(string email,string password)
 {
    string html =
-   @"<html>
-   <head></head>
-   <body>
-   <h1>Password  for your IotAutomatedCloud account</h1>
-   <p>This email was sent as a remainder for password: "+ password +  "</p></body></html>";
+   @"Password  for your IotAutomatedCloud account
+   This email was sent as a remainder for password: " + password + " " ;
 
     var fromAddress = new MailAddress("iotcloudautomated@gmail.com", "iotcloudautomated");
     var toAddress = new MailAddress(email, "PasswordForget@IotAutomatedCloud.com");
@@ -136,14 +133,11 @@ public String PostUser(User user)
 public void sendMail(string email)
 {
   string html =
-   @"<html>
-   <head></head>
-   <body>
-   <h1>Actication link for your IotAutomatedCloud account</h1>
-   <p>This email was sent activation
-   <a href=https://localhost:5000/api/activateUser/"+email+">Activation Link</a> click it.</p></body></html>";
+   @"Actication link for your IotAutomatedCloud account
+   This email was sent activation
+   https://localhost:5000/api/activateUser/"+email+">Activation Link</a> click it.";
 
-     var fromAddress = new MailAddress("iotcloudautomated@gmail.com", "iotcloudautomated");
+    var fromAddress = new MailAddress("iotcloudautomated@gmail.com", "iotcloudautomated");
     var toAddress = new MailAddress(email, "Activation@IotAutomatedCloud.com");
     const string fromPassword = "105481Do";
     const string subject = "Activation link for IotAutomatedCloud account";

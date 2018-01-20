@@ -19,17 +19,8 @@ namespace Auth
     {
       public String _connectionString;
       public String[] _host  = new String[2];
-
-
         public Startup(IConfiguration configuration)
-        {
-          // DotNetEnv.Env.Load();
-          /*  Configuration = configuration; 
-            var host = System.Environment.GetEnvironmentVariable("MYSQL_SERVER_NAME");
-            var db = System.Environment.GetEnvironmentVariable("MYSQL_DATABASE");
-            var user = System.Environment.GetEnvironmentVariable("MYSQL_USER");
-            var pass = System.Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
-            */
+        {  
            _connectionString = $@"host=mysqlDb;Database=iot; Uid=root; Pwd=105481Do";   
             String config = _connectionString;
         }
