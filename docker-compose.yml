@@ -5,6 +5,24 @@ volumes:
 
 services:
 
+ mysql-aws-backup:
+  image: "mysql-aws-backup"
+  links:
+   - mysqlDb
+  environment:
+     MYSQL_HOST: mysqlDb
+     MYSQL_PORT: 3306
+     MYSQL_USER: root 
+     MYSQL_PASS: 105481Do 
+     MYSQL_DB: iot
+     AWS_ACCESS_KEY_ID: AKIAJR26BC4EJ5A76LCQ
+     AWS_DEFAULT_REGION: us-west-2	
+     AWS_SECRET_ACCESS_KEY: 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
+     BACKUP_NAME: mysqlbackup
+     CRON_TIME: "0 0 0 0 0 0" 
+     S3_BUCKET_NAME: iotmysqlbackup
+
+
  mysqlDb:
   image: "mysql:8.0.0"
   restart: always
